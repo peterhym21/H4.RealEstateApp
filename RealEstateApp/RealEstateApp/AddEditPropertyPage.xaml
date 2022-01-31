@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:converters="clr-namespace:RealEstateApp.Converters"
-             xmlns:fa="clr-namespace:FontAwesome"
+             xmlns:fa="clr-namespace:FontAwesome" 
              mc:Ignorable="d"
              x:Class="RealEstateApp.AddEditPropertyPage"
              Title="{Binding Title}">
@@ -33,6 +33,31 @@
                         </Label.FormattedText>
                     </Label>
                     <Entry FontSize="Medium" Text="{Binding Property.Address}" />
+
+
+                    <Label FontSize="Medium" FontFamily="FA-solid">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{Static fa:IconFont.LocationArrow}"/>
+                                <Span Text=" " />
+                                <Span Text="Address*" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label FontSize="Medium" FontFamily="FA-solid">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{Binding Property.Latitude}"/>
+                                <Span Text=" " />
+                                <Span Text="{Binding Property.Longitude}" />
+                                <Span Text=" " />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Button Clicked="GetCurrentLocation_Clicked"
+                        FontFamily="FA-solid"
+                        Text="{x:Static fa:IconFont.Thumbtack}"></Button>
+
 
                     <Label FontSize="Medium" FontFamily="FA-solid">
                         <Label.FormattedText>
