@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:main="clr-namespace:RealEstateApp"
+             x:Class="RealEstateApp.AppShell">
+
+    <main:MenuPage Title="Home"/>
+    <main:AboutPage Title="About"/>
+    <main:PropertyListPage Title="Property List"/>
+
+</Shell>

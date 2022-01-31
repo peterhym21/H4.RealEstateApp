@@ -15,6 +15,7 @@ namespace RealEstateApp
             container.Register<IRepository, MockRepository>();
 
             MainPage = new MainPage();
+            //MainPage = new AppShell();
         }
 
 
