@@ -18,7 +18,7 @@
             CachingStrategy="RecycleElement"
             HasUnevenRows="true"
             IsPullToRefreshEnabled="true"
-            RefreshControlColor =" Color.Red"
+            RefreshControlColor ="Red"
             IsRefreshing="{Binding IsBusy, Mode=OneWay}"
             Refreshing="OnRefresh"
             ItemTapped="ItemsListView_ItemTapped"
