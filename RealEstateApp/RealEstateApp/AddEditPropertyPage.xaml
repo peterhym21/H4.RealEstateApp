@@ -20,6 +20,10 @@
                 BackgroundColor="{Binding StatusColor}"
                 IsVisible="{Binding StatusMessage, Converter={converters:StringBoolConverter}}"
                 Text="{Binding StatusMessage}" />
+            <Label
+                BackgroundColor="{Binding StatusColor}"
+                IsVisible="{Binding BatteryMessage, Converter={converters:StringBoolConverter}}"
+                Text="{Binding BatteryMessage}" />
             <ScrollView VerticalOptions="FillAndExpand">
                 <StackLayout Padding="15" Spacing="20">
 

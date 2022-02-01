@@ -52,6 +52,8 @@ namespace RealEstateApp
 
         public string StatusMessage { get; set; }
 
+        public string BatteryMessage { get; set; } 
+
         public Color StatusColor { get; set; } = Color.White;
         #endregion
 
@@ -74,6 +76,7 @@ namespace RealEstateApp
             }
 
             BindingContext = this;
+            BatteryStateChange();
         }
 
         #region SaveCancel
@@ -213,6 +216,33 @@ namespace RealEstateApp
         }
 
         #endregion
+
+
+        private async void BatteryStateChange()
+        {
+            var level = Battery.ChargeLevel; // returns 0.0 to 1.0 or 1.0 when on AC or no battery.
+
+            var state = Battery.State;
+            var status = Battery.EnergySaverStatus;
+
+
+            if (state == BatteryState.Charging)
+            {
+                BatteryMessage = "Charging your battery";
+                StatusColor = Color.Yellow;
+            }
+            if (level == 0.2)
+            {
+                BatteryMessage = "Your battery i getting Low";
+                StatusColor = Color.Red;
+            }
+            if (status == EnergySaverStatus.On)
+            {
+                BatteryMessage = "Your are in battery saving mode";
+                StatusColor = Color.Green;
+            }
+
+        }
 
 
 
