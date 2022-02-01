@@ -111,15 +111,23 @@ namespace RealEstateApp
         {
             try
             {
-
-                var request = new GeolocationRequest(GeolocationAccuracy.Medium, TimeSpan.FromSeconds(10));
-                cts = new CancellationTokenSource();
-                var location = await Geolocation.GetLocationAsync(request, cts.Token);
-
-                if (location != null)
+                var profiles = Connectivity.ConnectionProfiles;
+                if (profiles.Contains(ConnectionProfile.WiFi))
                 {
-                    Property.Latitude = location.Latitude;
-                    Property.Longitude = location.Longitude;
+                    var request = new GeolocationRequest(GeolocationAccuracy.Medium, TimeSpan.FromSeconds(10));
+                    cts = new CancellationTokenSource();
+                    var location = await Geolocation.GetLocationAsync(request, cts.Token);
+
+                    if (location != null)
+                    {
+                        Property.Latitude = location.Latitude;
+                        Property.Longitude = location.Longitude;
+                    }
+                }
+                else
+                {
+                    StatusMessage = "Network Required to use geolocation";
+                    StatusColor = Color.Red;
                 }
 
             }
@@ -146,19 +154,29 @@ namespace RealEstateApp
         {
             try
             {
-                double lat = Property.Latitude ?? 0;
-                double lon = Property.Longitude ?? 0;
-
-                var placemarks = await Geocoding.GetPlacemarksAsync(lat, lon);
-
-                var placemark = placemarks?.FirstOrDefault();
-                if (placemark != null)
+                var profiles = Connectivity.ConnectionProfiles;
+                if (profiles.Contains(ConnectionProfile.WiFi))
                 {
-                    var geocodeAddress =
-                        $"{placemark.SubThoroughfare} {placemark.Thoroughfare}, {placemark.Locality} {placemark.PostalCode}, {placemark.CountryName}";
+                    double lat = Property.Latitude ?? 0;
+                    double lon = Property.Longitude ?? 0;
 
-                    Property.Address = geocodeAddress;
+                    var placemarks = await Geocoding.GetPlacemarksAsync(lat, lon);
+
+                    var placemark = placemarks?.FirstOrDefault();
+                    if (placemark != null)
+                    {
+                        var geocodeAddress =
+                            $"{placemark.SubThoroughfare} {placemark.Thoroughfare}, {placemark.Locality} {placemark.PostalCode}, {placemark.CountryName}";
+
+                        Property.Address = geocodeAddress;
+                    }
                 }
+                else
+                {
+                    StatusMessage = "Network Required to use geolocation";
+                    StatusColor = Color.Red;
+                }
+
             }
             catch (FeatureNotSupportedException fnsEx)
             {
