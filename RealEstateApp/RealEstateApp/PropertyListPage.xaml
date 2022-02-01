@@ -3,12 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:fa="clr-namespace:FontAwesome"
+             xmlns:fa="clr-namespace:FontAwesome" 
              mc:Ignorable="d"
              x:Class="RealEstateApp.PropertyListPage">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Clicked="AddProperty_Clicked" />
+        <ToolbarItem IconImageSource="fa_sort_amount_asc.png" Clicked="SortPropertys_Clicked" />
     </ContentPage.ToolbarItems>
     
     <StackLayout>
@@ -101,6 +102,10 @@
                                     Grid.Row="3"
                                     FontSize="13"
                                     Text="{Binding Property.LandSize, StringFormat='Land Size: {0} &#x33a1;'}" />
+                                <Label
+                                    Grid.Row="4"
+                                    FontSize="13"
+                                    Text="{Binding Distance , StringFormat='{0:.##} km away'}" />
                             </Grid>
                         </Grid>
                     </ViewCell>

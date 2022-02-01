@@ -3,6 +3,7 @@ using RealEstateApp.Services;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using TinyIoC;
 using Xamarin.Essentials;
@@ -105,14 +106,21 @@ namespace RealEstateApp
             await Navigation.PopToRootAsync();
         }
 
+        CancellationTokenSource cts;
         private async void GetCurrentLocation_Clicked(object sender, System.EventArgs e)
         {
             try
             {
-                var location = await Geolocation.GetLocationAsync();
 
-                Property.Latitude = location.Latitude;
-                Property.Longitude = location.Longitude;
+                var request = new GeolocationRequest(GeolocationAccuracy.Medium, TimeSpan.FromSeconds(10));
+                cts = new CancellationTokenSource();
+                var location = await Geolocation.GetLocationAsync(request, cts.Token);
+
+                if (location != null)
+                {
+                    Property.Latitude = location.Latitude;
+                    Property.Longitude = location.Longitude;
+                }
 
             }
             catch (FeatureNotSupportedException fnsEx)

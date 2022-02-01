@@ -6,12 +6,14 @@ namespace RealEstateApp.Models
     // Her kunne vi også have benyttet Fody og blot tilføjet følgende property: [AddINotifyPropertyChangedInterface]
     public class PropertyListItem : INotifyPropertyChanged
     {
-        public PropertyListItem(Property property)
+        public PropertyListItem(Property property, double distance)
         {
             Property = property;
+            Distance = distance;
         }
 
         private Property _property;
+        private double _distance;
 
         public Property Property
         {
@@ -19,6 +21,15 @@ namespace RealEstateApp.Models
             set
             {
                 _property = value;
+                RaisePropertyChanged();
+            }
+        }
+        public double Distance
+        {
+            get => _distance;
+            set
+            {
+                _distance = value;
                 RaisePropertyChanged();
             }
         }
