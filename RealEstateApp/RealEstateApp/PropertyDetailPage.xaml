@@ -3,17 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:converters="clr-namespace:RealEstateApp.Converters"
              xmlns:fa="clr-namespace:FontAwesome"
              mc:Ignorable="d"
              x:Class="RealEstateApp.PropertyDetailPage"
              Title="{Binding Property.Address}">
-    
+
     <ContentPage.ToolbarItems>
         <ToolbarItem Clicked="EditProperty_Clicked"  Text="Edit" />
     </ContentPage.ToolbarItems>
 
     <ScrollView VerticalOptions="FillAndExpand">
-        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" 
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" 
               Padding="15">
             <Image
                 Grid.Row="0"
@@ -80,8 +81,16 @@
                 Margin="0,0,0,20"
                 FontSize="14"
                 Text="{Binding Property.Description}" />
+            <StackLayout Orientation="Horizontal" Grid.Row="7">
+                <Button Clicked="PlayDiscription_Clicked"
+                        FontFamily="FA-solid"
+                        Text="{x:Static fa:IconFont.Play}"></Button>
+                <Button Clicked="CancelSpeech_Clicked"
+                        FontFamily="FA-solid"
+                        Text="{x:Static fa:IconFont.Stop}"></Button>
+            </StackLayout>
             <Label
-                Grid.Row="7"
+                Grid.Row="8"
                 FontAttributes="Bold"
                 FontSize="14"
                 Text="Listed by:" />
