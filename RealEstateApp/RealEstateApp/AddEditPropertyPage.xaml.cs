@@ -76,12 +76,32 @@ namespace RealEstateApp
             BindingContext = this;
         }
 
+        #region SaveCancel
+
+        
         private async void SaveProperty_Clicked(object sender, System.EventArgs e)
         {
             if (IsValid() == false)
             {
                 StatusMessage = "Please fill in all required fields";
                 StatusColor = Color.Red;
+                try
+                {
+                    // Use default vibration length
+                    Vibration.Vibrate();
+
+                    // Or use specified time
+                    var duration = TimeSpan.FromSeconds(1);
+                    Vibration.Vibrate(duration);
+                }
+                catch (FeatureNotSupportedException ex)
+                {
+                    // Feature not supported on device
+                }
+                catch (Exception ex)
+                {
+                    // Other error has occurred.
+                }
             }
             else
             {
@@ -105,6 +125,11 @@ namespace RealEstateApp
         {
             await Navigation.PopToRootAsync();
         }
+
+        #endregion
+
+
+        #region Location
 
         CancellationTokenSource cts;
         private async void GetCurrentLocation_Clicked(object sender, System.EventArgs e)
@@ -149,7 +174,6 @@ namespace RealEstateApp
             }
         }
 
-
         private async void GetAddressFromLocation_Clicked(object sender, System.EventArgs e)
         {
             try
@@ -188,7 +212,7 @@ namespace RealEstateApp
             }
         }
 
-
+        #endregion
 
 
 

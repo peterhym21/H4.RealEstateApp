@@ -41,3 +41,5 @@ using Android.App;
 [assembly: UsesFeature("android.hardware.location.network", Required = false)]
 
 [assembly: UsesPermission(Android.Manifest.Permission.AccessNetworkState)]
+
+[assembly: UsesPermission(Android.Manifest.Permission.Vibrate)]
