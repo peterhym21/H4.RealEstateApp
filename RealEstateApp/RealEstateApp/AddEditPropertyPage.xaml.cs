@@ -31,10 +31,10 @@ namespace RealEstateApp
                 {
                     SelectedAgent = Agents.FirstOrDefault(x => x.Id == _property?.AgentId);
                 }
-               
+
             }
         }
-    
+
         private Agent _selectedAgent;
 
         public Agent SelectedAgent
@@ -46,7 +46,7 @@ namespace RealEstateApp
                 {
                     _selectedAgent = value;
                     Property.AgentId = _selectedAgent?.Id;
-                }                 
+                }
             }
         }
 
@@ -72,7 +72,7 @@ namespace RealEstateApp
                 Title = "Edit Property";
                 Property = property;
             }
-         
+
             BindingContext = this;
         }
 
@@ -87,7 +87,7 @@ namespace RealEstateApp
             {
                 Repository.SaveProperty(Property);
                 await Navigation.PopToRootAsync();
-            }   
+            }
         }
 
         public bool IsValid()
@@ -140,6 +140,40 @@ namespace RealEstateApp
                 // Unable to get location
             }
         }
+
+
+        private async void GetAddressFromLocation_Clicked(object sender, System.EventArgs e)
+        {
+            try
+            {
+                double lat = Property.Latitude ?? 0;
+                double lon = Property.Longitude ?? 0;
+
+                var placemarks = await Geocoding.GetPlacemarksAsync(lat, lon);
+
+                var placemark = placemarks?.FirstOrDefault();
+                if (placemark != null)
+                {
+                    var geocodeAddress =
+                        $"{placemark.SubThoroughfare} {placemark.Thoroughfare}, {placemark.Locality} {placemark.PostalCode}, {placemark.CountryName}";
+
+                    Property.Address = geocodeAddress;
+                }
+            }
+            catch (FeatureNotSupportedException fnsEx)
+            {
+                // Feature not supported on device
+            }
+            catch (Exception ex)
+            {
+                // Handle exception that may have occurred in geocoding
+            }
+        }
+
+
+
+
+
 
 
     }

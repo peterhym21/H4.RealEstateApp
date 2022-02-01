@@ -32,7 +32,7 @@
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
-                    <Entry FontSize="Medium" Text="{Binding Property.Address}" />
+                    <Entry FontSize="Medium" x:Name="Address" Text="{Binding Property.Address}" />
 
 
                     <Label FontSize="Medium" FontFamily="FA-solid">
@@ -40,23 +40,26 @@
                             <FormattedString>
                                 <Span Text="{Static fa:IconFont.LocationArrow}"/>
                                 <Span Text=" " />
-                                <Span Text="Address*" />
+                                <Span Text="Location*" />
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
-                    <Label FontSize="Medium" FontFamily="FA-solid">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="{Binding Property.Latitude}"/>
-                                <Span Text=" " />
-                                <Span Text="{Binding Property.Longitude}" />
-                                <Span Text=" " />
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                    <Button Clicked="GetCurrentLocation_Clicked"
+                    <StackLayout Orientation="Vertical">
+
+                        <Label FontSize="Medium" FontFamily="FA-solid"
+                               Text="{Binding Property.Latitude}"/>
+                        <Label FontSize="Medium" FontFamily="FA-solid"
+                               Text="{Binding Property.Longitude}"/>
+                        <Button Clicked="GetCurrentLocation_Clicked"
                         FontFamily="FA-solid"
                         Text="{x:Static fa:IconFont.Thumbtack}"></Button>
+                        <Button Clicked="GetAddressFromLocation_Clicked"
+                        FontFamily="FA-solid"
+                        Text="{x:Static fa:IconFont.Home}"></Button>
+
+                    </StackLayout>
+
+
 
 
                     <Label FontSize="Medium" FontFamily="FA-solid">
