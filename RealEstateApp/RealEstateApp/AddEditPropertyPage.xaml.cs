@@ -229,7 +229,7 @@ namespace RealEstateApp
                 BatteryMessage = "Charging your battery";
                 StatusColor = Color.Yellow;
             }
-            if (level == 0.2)
+            if (level <= 0.2)
             {
                 BatteryMessage = "Your battery i getting Low";
                 StatusColor = Color.Red;
