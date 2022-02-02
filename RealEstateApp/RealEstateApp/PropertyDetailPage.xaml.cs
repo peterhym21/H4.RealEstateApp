@@ -7,6 +7,7 @@ using TinyIoC;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System;
 
 namespace RealEstateApp
 {
@@ -34,13 +35,13 @@ namespace RealEstateApp
 
         public Property Property { get; set; }
 
-        private async void EditProperty_Clicked(object sender, System.EventArgs e)
+        private async void EditProperty_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new AddEditPropertyPage(Property));
         }
 
 
-        private async void PlayDiscription_Clicked(object sender, System.EventArgs e)
+        private async void PlayDiscription_Clicked(object sender, EventArgs e)
         {
             await SpeakNowDefaultSettings();
         }
@@ -52,13 +53,21 @@ namespace RealEstateApp
             await TextToSpeech.SpeakAsync(Property.Description, cts.Token);
         }
 
-        private void CancelSpeech_Clicked(object sender, System.EventArgs e)
+        private void CancelSpeech_Clicked(object sender, EventArgs e)
         {
             if (cts?.IsCancellationRequested ?? true)
                 return;
 
             cts.Cancel();
         }
+
+        private async void OnTabGestureRecognizerTapped(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new ImageListPage(Property));
+        }
+
+
+
 
     }
 }
