@@ -92,10 +92,6 @@ namespace RealEstateApp
                 StatusColor = Color.Red;
                 try
                 {
-                    // Use default vibration length
-                    Vibration.Vibrate();
-
-                    // Or use specified time
                     var duration = TimeSpan.FromSeconds(1);
                     Vibration.Vibrate(duration);
                 }
@@ -245,7 +241,6 @@ namespace RealEstateApp
             }
 
         }
-
 
 
         private async void FlashLight_Clicked(object sender, System.EventArgs e)
