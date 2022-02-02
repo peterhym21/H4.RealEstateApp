@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:fa="clr-namespace:FontAwesome"
+             x:Class="RealEstateApp.HeightCalculatorPage">
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="*" >
+
+
+            <Label FontSize="Large" FontFamily="FA-solid"
+                   Grid.Row="0" Grid.Column="0" 
+                   Margin="0,20" HorizontalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Current Altitude"/>
+                        <Span Text=" " />
+                        <Span Text="{Binding CurrentAltitude}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            
+            <Label FontSize="Small" FontFamily="FA-solid"
+                   Grid.Row="1" Grid.Column="0" 
+                   Margin="0,20" HorizontalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Current Pressure"/>
+                        <Span Text=" " />
+                        <Span Text="{Binding CurrentPressure}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+
+            <Entry Grid.Row="2" FontSize="Medium" x:Name="LabelName"/>
+
+            <Button Clicked="SaveMesurment_Clicked"
+                        Grid.Row="3"
+                        FontFamily="FA-solid"
+                        Text="{x:Static fa:IconFont.Save}">
+            </Button>
+
+
+            <StackLayout Grid.Row="4" Grid.Column="0">
+                <ListView
+                x:Name="ItemsListView"
+                BackgroundColor="LightGray"
+                CachingStrategy="RecycleElement"
+                HasUnevenRows="true"
+                ItemsSource="{Binding BarometerMeasurements}"
+                VerticalOptions="FillAndExpand">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Label FontSize="Large" FontFamily="FA-solid"
+                                    Margin="0,20" HorizontalOptions="Center" Text="{Binding Display}">
+                                </Label>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

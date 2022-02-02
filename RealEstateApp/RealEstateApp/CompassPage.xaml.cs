@@ -22,6 +22,12 @@ namespace RealEstateApp
         SensorSpeed speed = SensorSpeed.UI;
 
         private readonly Property _property;
+
+        public CompassPage()
+        {
+            InitializeComponent();
+            BindingContext = this;
+        }
         public CompassPage(Property property)
         {
             InitializeComponent();
