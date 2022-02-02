@@ -50,6 +50,8 @@ namespace RealEstateApp
             }
         }
 
+        public bool FlashOnOff { get; set; } = false;
+
         public string StatusMessage { get; set; }
 
         public string BatteryMessage { get; set; } 
@@ -245,6 +247,45 @@ namespace RealEstateApp
         }
 
 
+
+        private async void FlashLight_Clicked(object sender, System.EventArgs e)
+        {
+            try
+            {
+                if (!FlashOnOff)
+                {
+                    FlashOnOff = true;
+                }
+                else
+                {
+                    FlashOnOff = false;
+                }
+
+                if (FlashOnOff)
+                {
+                    await Flashlight.TurnOnAsync();
+                }
+                if (!FlashOnOff)
+                {
+                    await Flashlight.TurnOffAsync();
+                }
+                
+
+                
+            }
+            catch (FeatureNotSupportedException fnsEx)
+            {
+                // Handle not supported on device exception
+            }
+            catch (PermissionException pEx)
+            {
+                // Handle permission exception
+            }
+            catch (Exception ex)
+            {
+                // Unable to turn on/off flashlight
+            }
+        }
 
 
 

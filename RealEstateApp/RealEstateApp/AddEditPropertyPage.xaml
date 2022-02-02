@@ -12,6 +12,8 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Clicked="CancelSave_Clicked" Text="Cancel" />
         <ToolbarItem Clicked="SaveProperty_Clicked" Text="Save" />
+        <ToolbarItem Clicked="FlashLight_Clicked"
+                     Text="{Static fa:IconFont.Lightbulb}" />
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
