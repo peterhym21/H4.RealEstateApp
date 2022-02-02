@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RealEstateApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,11 @@ namespace RealEstateApp
         // Set speed delay for monitoring changes.
         SensorSpeed speed = SensorSpeed.UI;
 
-        public CompassPage()
+        private readonly Property _property;
+        public CompassPage(Property property)
         {
             InitializeComponent();
+            _property = property;
             BindingContext = this;
 
         }
@@ -56,24 +59,22 @@ namespace RealEstateApp
             CurrentHeading = data.HeadingMagneticNorth.ToString();
             RotationAngle = (int)data.HeadingMagneticNorth * - 1;
 
-            if (data.HeadingMagneticNorth >= 315 && data.HeadingMagneticNorth <= 45)
+            CurrentAspect = RotationAngle switch
             {
-                CurrentAspect = "Nord";
-            }
-            if (data.HeadingMagneticNorth >= 45 && data.HeadingMagneticNorth <= 135)
-            {
-                CurrentAspect = "Øst";
-            }
-            if (data.HeadingMagneticNorth >= 135 && data.HeadingMagneticNorth <= 225)
-            {
-                CurrentAspect = "syd";
-            }
-            if (data.HeadingMagneticNorth >= 225 && data.HeadingMagneticNorth <= 315)
-            {
-                CurrentAspect = "Vest";
-            }
+                > 45 and < 135 => "West",
+                > 135 and < 225 => "South",
+                > 225 and < 315 => "East",
+                // > 315 and < 45
+                _ => "North",
+            };
 
             // Process Heading Magnetic North
+        }
+
+        private async void SaveAspect_Clicked(object sender, EventArgs e)
+        {
+            _property.Aspect = CurrentAspect;
+            await Navigation.PopModalAsync();
         }
 
 

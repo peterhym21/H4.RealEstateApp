@@ -73,8 +73,28 @@
 
                     </StackLayout>
 
+                    
+                    
+                    
+                    <Label FontSize="Medium" FontFamily="FA-solid">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{Static fa:IconFont.Compass}"/>
+                                <Span Text=" " />
+                                <Span Text="Aspect*" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <StackLayout Orientation="Vertical">
+                        <Entry FontSize="Medium" Text="{Binding Property.Aspect}" />
+                        <Button Clicked="GetAspect_Clicked"
+                        FontFamily="FA-solid"
+                        Text="{x:Static fa:IconFont.DraftingCompass}"></Button>
 
+                    </StackLayout>
 
+                    
+                    
 
                     <Label FontSize="Medium" FontFamily="FA-solid">
                         <Label.FormattedText>

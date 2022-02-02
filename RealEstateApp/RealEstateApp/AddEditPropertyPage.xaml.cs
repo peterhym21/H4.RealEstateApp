@@ -50,6 +50,8 @@ namespace RealEstateApp
             }
         }
 
+        
+
         public bool FlashOnOff { get; set; } = false;
 
         public string StatusMessage { get; set; }
@@ -280,6 +282,12 @@ namespace RealEstateApp
             {
                 // Unable to turn on/off flashlight
             }
+        }
+
+
+        private void GetAspect_Clicked(object sender, System.EventArgs e)
+        {
+            Navigation.PushModalAsync(new CompassPage(Property));
         }
 
 
