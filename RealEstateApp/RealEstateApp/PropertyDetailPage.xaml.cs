@@ -42,6 +42,9 @@ namespace RealEstateApp
         }
 
 
+        #region TTS
+
+        
         private async void PlayDiscription_Clicked(object sender, EventArgs e)
         {
             await SpeakNowDefaultSettings();
@@ -61,11 +64,16 @@ namespace RealEstateApp
 
             cts.Cancel();
         }
+        #endregion
 
         private void Image_OnTabGestureRecognizerTapped(object sender, EventArgs e)
         {
             Navigation.PushModalAsync(new ImageListPage(Property));
         }
+
+        #region sms Call Email
+
+
 
         private async void Email_OnTapGestureRecognizerTapped(object sender, EventArgs e)
         {
@@ -149,7 +157,29 @@ namespace RealEstateApp
             }
         }
 
+        #endregion
 
+
+        private async void MapMarkedAlt_Clicked(object sender, EventArgs e)
+        {
+            var location = new Location((double)Property.Latitude, (double)Property.Longitude);
+            try
+            {
+                await Map.OpenAsync(location);
+            }
+            catch (Exception ex)
+            {
+                // No map application available to open
+            }
+        }
+
+        private async void Directions_Clicked(object sender, EventArgs e)
+        {
+            var location = new Location((double)Property.Latitude, (double)Property.Longitude);
+            var options = new MapLaunchOptions { NavigationMode = NavigationMode.Driving };
+
+            await Map.OpenAsync(location, options);
+        }
 
     }
 }

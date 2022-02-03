@@ -180,6 +180,19 @@
                         Text="{Binding Agent.Phone}" />
                 </Grid>
             </Grid>
+
+            <StackLayout Orientation="Horizontal"
+                Grid.Row="12">
+                <Button Clicked="MapMarkedAlt_Clicked"
+                    FontFamily="FA-solid"
+                    Text="{x:Static fa:IconFont.MapMarkedAlt}">
+                </Button>
+
+                <Button Clicked="Directions_Clicked"
+                    FontFamily="FA-solid"
+                    Text="{x:Static fa:IconFont.Directions}">
+                </Button>
+            </StackLayout>
         </Grid>
     </ScrollView>
 </ContentPage>
