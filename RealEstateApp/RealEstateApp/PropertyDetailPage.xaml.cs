@@ -61,7 +61,7 @@ namespace RealEstateApp
             cts.Cancel();
         }
 
-        private async void OnTabGestureRecognizerTapped(object sender, EventArgs e)
+        private void OnTabGestureRecognizerTapped(object sender, EventArgs e)
         {
             Navigation.PushModalAsync(new ImageListPage(Property));
         }

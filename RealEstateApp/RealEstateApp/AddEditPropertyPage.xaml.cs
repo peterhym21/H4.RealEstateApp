@@ -245,7 +245,7 @@ namespace RealEstateApp
         }
 
 
-        private async void FlashLight_Clicked(object sender, System.EventArgs e)
+        private async void FlashLight_Clicked(object sender, EventArgs e)
         {
             try
             {
@@ -285,7 +285,7 @@ namespace RealEstateApp
         }
 
 
-        private void GetAspect_Clicked(object sender, System.EventArgs e)
+        private void GetAspect_Clicked(object sender, EventArgs e)
         {
             Navigation.PushModalAsync(new CompassPage(Property));
         }
