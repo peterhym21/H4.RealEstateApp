@@ -14,7 +14,7 @@
     </ContentPage.ToolbarItems>
 
     <ScrollView VerticalOptions="FillAndExpand">
-        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" 
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" 
               Padding="15">
             <Image
                 Grid.Row="0"
@@ -197,11 +197,14 @@
                     FontFamily="FA-solid"
                     Text="{x:Static fa:IconFont.Link}">
                 </Button>
-                
+
                 <Button Clicked="ExternalLink_Clicked"
                     FontFamily="FA-solid"
                     Text="{x:Static fa:IconFont.ExternalLinkAlt}">
                 </Button>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal"
+                Grid.Row="13">
 
                 <Button Clicked="PDF_Clicked"
                     FontFamily="FA-solid"

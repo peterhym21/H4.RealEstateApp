@@ -208,7 +208,10 @@ namespace RealEstateApp
         }
         private async void PDF_Clicked(object sender, EventArgs e)
         {
-
+            await Launcher.OpenAsync(new OpenFileRequest
+            {
+                File = new ReadOnlyFile(Property.ContractFilePath)
+            });
         }
 
     }

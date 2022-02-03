@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using Xamarin.Essentials;
 
 namespace RealEstateApp.Services.Repository
@@ -15,20 +16,20 @@ namespace RealEstateApp.Services.Repository
 
         public MockRepository()
         {
+            LoadFiles().Wait();
             LoadProperties();
             LoadAgents();
-            LoadFiles();
         }
 
-        private async void LoadFiles()
+        private async Task LoadFiles()
         {
-            string myDocuments = FileSystem.CacheDirectory;
-            //string myDocuments = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string myDocuments = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             _contractFilePath = Path.Combine(myDocuments, "contract.pdf");
 
-            using Stream contractStream = await FileSystem.OpenAppPackageFileAsync(_contractFilePath);
-            using FileStream outputStream = File.OpenWrite(myDocuments);
-            contractStream.CopyToAsync(contractStream);
+            using Stream contractStream = await FileSystem.OpenAppPackageFileAsync("contract.pdf");
+            using MemoryStream memoryStream = new();
+            contractStream.CopyTo(memoryStream);
+            File.WriteAllBytes(_contractFilePath, memoryStream.ToArray());
 
 
         }
