@@ -8,6 +8,7 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System;
+using System.IO;
 
 namespace RealEstateApp
 {
@@ -61,11 +62,92 @@ namespace RealEstateApp
             cts.Cancel();
         }
 
-        private void OnTabGestureRecognizerTapped(object sender, EventArgs e)
+        private void Image_OnTabGestureRecognizerTapped(object sender, EventArgs e)
         {
             Navigation.PushModalAsync(new ImageListPage(Property));
         }
 
+        private async void Email_OnTapGestureRecognizerTapped(object sender, EventArgs e)
+        {
+            var folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            var attachmentFilePath = Path.Combine(folder, "property.txt");
+            File.WriteAllText(attachmentFilePath, $"{Property.Address}");
+            try
+            {
+                var message = new EmailMessage
+                {
+                    Subject = "Test",
+                    Body = "test",
+                    To = new() { Property.Vendor.Email },
+                    Attachments = new()
+                    {
+                        new EmailAttachment(attachmentFilePath)
+                    }
+                };
+                await Email.ComposeAsync(message);
+            }
+            catch (FeatureNotSupportedException fbsEx)
+            {
+                // Email is not supported on this device
+            }
+            catch (Exception ex)
+            {
+                // Some other exception occurred
+            }
+
+        }
+
+        private async void Phone_OnTapGestureRecognizerTapped(object sender, EventArgs e)
+        {
+            string action = await DisplayActionSheet("Call, Message?", "Cancel", null, "Call", "Message");
+            switch (action)
+            {
+                case "Call":
+                    PlacePhoneCall();
+                    break;
+                case "Message":
+                    await SendSms();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        public void PlacePhoneCall()
+        {
+            try
+            {
+                PhoneDialer.Open(Property.Vendor.Phone);
+            }
+            catch (ArgumentNullException anEx)
+            {
+                // Number was null or white space
+            }
+            catch (FeatureNotSupportedException ex)
+            {
+                // Phone Dialer is not supported on this device.
+            }
+            catch (Exception ex)
+            {
+                // Other error has occurred.
+            }
+        }
+        public async Task SendSms()
+        {
+            try
+            {
+                var message = new SmsMessage("test", new[] { Property.Vendor.Phone });
+                await Sms.ComposeAsync(message);
+            }
+            catch (FeatureNotSupportedException ex)
+            {
+                // Sms is not supported on this device.
+            }
+            catch (Exception ex)
+            {
+                // Other error has occurred.
+            }
+        }
 
 
 
