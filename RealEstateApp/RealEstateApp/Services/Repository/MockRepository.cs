@@ -1,7 +1,9 @@
 ﻿using RealEstateApp.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using Xamarin.Essentials;
 
 namespace RealEstateApp.Services.Repository
 {
@@ -9,11 +11,26 @@ namespace RealEstateApp.Services.Repository
     {
         private List<Agent> _agents;
         private List<Property> _properties;
+        private string _contractFilePath;
 
         public MockRepository()
         {
             LoadProperties();
             LoadAgents();
+            LoadFiles();
+        }
+
+        private async void LoadFiles()
+        {
+            string myDocuments = FileSystem.CacheDirectory;
+            //string myDocuments = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            _contractFilePath = Path.Combine(myDocuments, "contract.pdf");
+
+            using Stream contractStream = await FileSystem.OpenAppPackageFileAsync(_contractFilePath);
+            using FileStream outputStream = File.OpenWrite(myDocuments);
+            contractStream.CopyToAsync(contractStream);
+
+
         }
 
         public List<Agent> GetAgents()
@@ -63,6 +80,7 @@ namespace RealEstateApp.Services.Repository
                         Email = "wgrant@pluralsight.com",
                         Phone = "+61423555712"
                     },
+                    ContractFilePath = _contractFilePath,
                     Aspect = "North"
                 },
                 new Property
@@ -80,6 +98,7 @@ namespace RealEstateApp.Services.Repository
                         Email = "acooper@pluralsight.com",
                         Phone = "+61290014312"
                     },
+                    ContractFilePath = _contractFilePath,
                     Aspect = "East"
                 },
                 new Property
@@ -96,6 +115,7 @@ namespace RealEstateApp.Services.Repository
                         Email = "mpickering@pluralsight.com",
                         Phone = "0429008145"
                     },
+                    ContractFilePath = _contractFilePath,
                     Aspect = "South"
                 },
                 new Property
@@ -113,6 +133,7 @@ namespace RealEstateApp.Services.Repository
                         Email = "sbyron@pluralsight.com",
                         Phone = "02 8090 6412"
                     },
+                    ContractFilePath = _contractFilePath,
                     Aspect = "North"
                 },
                 new Property
@@ -129,6 +150,7 @@ namespace RealEstateApp.Services.Repository
                         Email = "joaks@pluralsight.com",
                         Phone = "90541823"
                     },
+                    ContractFilePath = _contractFilePath,
                     Aspect = "West"
                 }
             };

@@ -181,5 +181,35 @@ namespace RealEstateApp
             await Map.OpenAsync(location, options);
         }
 
+
+        private async void Link_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                await Browser.OpenAsync("https://www.erdetfredag.dk/", BrowserLaunchMode.SystemPreferred);
+            }
+            catch (Exception ex)
+            {
+                // An unexpected error occured. No browser may be installed on the device.
+            }
+        }
+
+
+        private async void ExternalLink_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                await Browser.OpenAsync("https://www.erdetfredag.dk/", BrowserLaunchMode.External);
+            }
+            catch (Exception ex)
+            {
+                // An unexpected error occured. No browser may be installed on the device.
+            }
+        }
+        private async void PDF_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

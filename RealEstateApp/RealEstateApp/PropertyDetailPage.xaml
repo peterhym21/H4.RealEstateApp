@@ -192,6 +192,21 @@
                     FontFamily="FA-solid"
                     Text="{x:Static fa:IconFont.Directions}">
                 </Button>
+
+                <Button Clicked="Link_Clicked"
+                    FontFamily="FA-solid"
+                    Text="{x:Static fa:IconFont.Link}">
+                </Button>
+                
+                <Button Clicked="ExternalLink_Clicked"
+                    FontFamily="FA-solid"
+                    Text="{x:Static fa:IconFont.ExternalLinkAlt}">
+                </Button>
+
+                <Button Clicked="PDF_Clicked"
+                    FontFamily="FA-solid"
+                    Text="{x:Static fa:IconFont.FileSignature}">
+                </Button>
             </StackLayout>
         </Grid>
     </ScrollView>
