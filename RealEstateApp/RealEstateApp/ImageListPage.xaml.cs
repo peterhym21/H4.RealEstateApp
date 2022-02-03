@@ -64,7 +64,11 @@ namespace RealEstateApp
 
         void Accelerometer_ShakeDetected(object sender, EventArgs e)
         {
-            // Process shake event
+            // TheCarousel
+            if (TheCarousel.Position < Posistion.Count - 1)
+                TheCarousel.Position = TheCarousel.Position++;
+            else
+                TheCarousel.Position = 0;
         }
 
 
