@@ -4,7 +4,52 @@
              x:Class="RealEstateApp.ImageListPage">
     <ContentPage.Content>
 
-        <CarouselView ItemsSource="{Binding Posistion}">
+        <AbsoluteLayout>
+            <CarouselView
+            x:Name="TheCarousel"
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All"
+            IndicatorView="indicatorview"
+            ItemsSource="{Binding Posistion}">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <AbsoluteLayout>
+                            <StackLayout
+                            AbsoluteLayout.LayoutBounds=
+                            "0.5,0.3,AutoSize,AutoSize"
+                            AbsoluteLayout.LayoutFlags=
+                            "PositionProportional"
+                            HorizontalOptions="Center">
+                                <Frame
+                           HasShadow="True"
+                           BorderColor="DarkGray"
+                           CornerRadius="5"
+                           Margin="20"
+                           HeightRequest="300"
+                           HorizontalOptions="Center"
+                           VerticalOptions="CenterAndExpand">
+                                    <Image
+                                Margin="-10,-10,-10,0"
+                                Aspect="AspectFill"
+                                HeightRequest="225"
+                                Source="{Binding Path=.}" >
+                                    </Image>
+                                </Frame>
+                            </StackLayout>
+                        </AbsoluteLayout>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+            <IndicatorView
+            x:Name="indicatorview"
+            AbsoluteLayout.LayoutBounds="0.5,0.95,100,100"
+            AbsoluteLayout.LayoutFlags="PositionProportional"
+            IndicatorColor="LightGray"
+            IndicatorSize="10"
+            SelectedIndicatorColor="Black" />
+        </AbsoluteLayout>
+
+        <!--<CarouselView ItemsSource="{Binding Posistion}">
             <CarouselView.ItemTemplate>
                 <DataTemplate>
                     <StackLayout>
@@ -26,9 +71,7 @@
                     </StackLayout>
                 </DataTemplate>
             </CarouselView.ItemTemplate>
-        </CarouselView>
-
-
+        </CarouselView>-->
 
     </ContentPage.Content>
 </ContentPage>
