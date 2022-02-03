@@ -69,7 +69,7 @@ namespace RealEstateApp
                     Altitude = CurrentAltitude,
                     Label = LabelName.Text,
                     Pressure = CurrentPressure,
-                    HeightChange = BarometerMeasurements.FirstOrDefault().Altitude - CurrentAltitude
+                    HeightChange = (CurrentAltitude - BarometerMeasurements.Last().Altitude)
                 });
             }
             else

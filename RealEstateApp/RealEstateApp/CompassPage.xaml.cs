@@ -70,11 +70,10 @@ namespace RealEstateApp
                 > 45 and < 135 => "West",
                 > 135 and < 225 => "South",
                 > 225 and < 315 => "East",
-                // > 315 and < 45
+                // > 315 or < 45 => "North"
                 _ => "North",
             };
 
-            // Process Heading Magnetic North
         }
 
         private async void SaveAspect_Clicked(object sender, EventArgs e)
