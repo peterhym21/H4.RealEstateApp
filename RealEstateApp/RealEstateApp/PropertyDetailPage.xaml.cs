@@ -9,6 +9,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace RealEstateApp
 {
@@ -160,6 +161,8 @@ namespace RealEstateApp
         #endregion
 
 
+        #region Maps
+
         private async void MapMarkedAlt_Clicked(object sender, EventArgs e)
         {
             var location = new Location((double)Property.Latitude, (double)Property.Longitude);
@@ -180,7 +183,10 @@ namespace RealEstateApp
 
             await Map.OpenAsync(location, options);
         }
+        #endregion
 
+
+        #region Link
 
         private async void Link_Clicked(object sender, EventArgs e)
         {
@@ -213,6 +219,42 @@ namespace RealEstateApp
                 File = new ReadOnlyFile(Property.ContractFilePath)
             });
         }
+
+        #endregion
+
+
+        #region share Copy
+
+        private async void ShareText_Clicked(object sender, EventArgs e)
+        {
+            await Share.RequestAsync(new ShareTextRequest
+            {
+                Uri = Property.NeighbourhoodUrl,
+                Subject = "A property you may be interested in",
+                Text = $"Address: {Property.Address}, Price: {Property.Price}, Beds: {Property.Beds}",
+                Title = "Share Property"
+            });
+        }
+
+        private async void ShareFile_Clicked(object sender, EventArgs e)
+        {
+            await Share.RequestAsync(new ShareFileRequest
+            {
+
+                Title = "Share Property Contract",
+                File = new ShareFile(Property.ContractFilePath)
+            });
+        }
+
+        private async void CopyClipboard_Clicked(object sender, EventArgs e)
+        {
+
+            await Clipboard.SetTextAsync(JsonConvert.SerializeObject(Property));
+        }
+
+
+
+        #endregion
 
     }
 }

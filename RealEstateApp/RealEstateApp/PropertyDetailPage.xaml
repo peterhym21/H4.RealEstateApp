@@ -210,6 +210,21 @@
                     FontFamily="FA-solid"
                     Text="{x:Static fa:IconFont.FileSignature}">
                 </Button>
+
+                <Button Clicked="ShareText_Clicked"
+                    FontFamily="FA-solid"
+                    Text="{x:Static fa:IconFont.ShareAlt}">
+                </Button>
+
+                <Button Clicked="ShareFile_Clicked"
+                    FontFamily="FA-solid"
+                    Text="{x:Static fa:IconFont.ShareSquare}">
+                </Button>
+
+                <Button Clicked="CopyClipboard_Clicked"
+                    FontFamily="FA-solid"
+                    Text="{x:Static fa:IconFont.Clipboard}">
+                </Button>
             </StackLayout>
         </Grid>
     </ScrollView>

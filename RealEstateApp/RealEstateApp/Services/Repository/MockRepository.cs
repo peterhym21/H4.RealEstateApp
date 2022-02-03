@@ -81,6 +81,7 @@ namespace RealEstateApp.Services.Repository
                         Email = "wgrant@pluralsight.com",
                         Phone = "+61423555712"
                     },
+                    NeighbourhoodUrl = "https://en.wikipedia.org/wiki/Collaroy,_New_South_Wales",
                     ContractFilePath = _contractFilePath,
                     Aspect = "North"
                 },
@@ -99,6 +100,7 @@ namespace RealEstateApp.Services.Repository
                         Email = "acooper@pluralsight.com",
                         Phone = "+61290014312"
                     },
+                    NeighbourhoodUrl = "https://en.wikipedia.org/wiki/Collaroy,_New_South_Wales",
                     ContractFilePath = _contractFilePath,
                     Aspect = "East"
                 },
@@ -116,6 +118,7 @@ namespace RealEstateApp.Services.Repository
                         Email = "mpickering@pluralsight.com",
                         Phone = "0429008145"
                     },
+                    NeighbourhoodUrl = "https://en.wikipedia.org/wiki/Collaroy,_New_South_Wales",
                     ContractFilePath = _contractFilePath,
                     Aspect = "South"
                 },
@@ -134,6 +137,7 @@ namespace RealEstateApp.Services.Repository
                         Email = "sbyron@pluralsight.com",
                         Phone = "02 8090 6412"
                     },
+                    NeighbourhoodUrl = "https://en.wikipedia.org/wiki/Collaroy,_New_South_Wales",
                     ContractFilePath = _contractFilePath,
                     Aspect = "North"
                 },
@@ -151,6 +155,7 @@ namespace RealEstateApp.Services.Repository
                         Email = "joaks@pluralsight.com",
                         Phone = "90541823"
                     },
+                    NeighbourhoodUrl = "https://en.wikipedia.org/wiki/Collaroy,_New_South_Wales",
                     ContractFilePath = _contractFilePath,
                     Aspect = "West"
                 }
