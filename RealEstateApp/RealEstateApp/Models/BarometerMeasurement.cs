@@ -13,6 +13,6 @@ namespace RealEstateApp.Models
         public string Label { get; set; }
         public double HeightChange { get; set; }
 
-        public string Display => $"{Label}: {Altitude:N2}m";
+        public string Display => $"{Label}: {Altitude:N2}m, Hight Change: {HeightChange:N2}m";
     }
 }

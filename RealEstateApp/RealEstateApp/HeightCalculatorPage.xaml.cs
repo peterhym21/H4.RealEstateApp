@@ -62,14 +62,28 @@ namespace RealEstateApp
 
         private void SaveMesurment_Clicked(object sender, EventArgs e)
         {
-            BarometerMeasurements.Add(new BarometerMeasurement 
-            { 
-                Altitude = CurrentAltitude, 
-                Label = LabelName.Text, 
-                Pressure = CurrentPressure
-            });
-
+            if (BarometerMeasurements.Count >= 1)
+            {
+                BarometerMeasurements.Add(new BarometerMeasurement
+                {
+                    Altitude = CurrentAltitude,
+                    Label = LabelName.Text,
+                    Pressure = CurrentPressure,
+                    HeightChange = BarometerMeasurements.FirstOrDefault().Altitude - CurrentAltitude
+                });
+            }
+            else
+            {
+                BarometerMeasurements.Add(new BarometerMeasurement
+                {
+                    Altitude = CurrentAltitude,
+                    Label = LabelName.Text,
+                    Pressure = CurrentPressure,
+                    HeightChange = 0
+                });
+            }
 
         }
+
     }
 }
