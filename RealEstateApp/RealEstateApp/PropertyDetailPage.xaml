@@ -14,7 +14,7 @@
     </ContentPage.ToolbarItems>
 
     <ScrollView VerticalOptions="FillAndExpand">
-        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" 
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" 
               Padding="15">
             <Image
                 Grid.Row="0"
@@ -95,11 +95,11 @@
                         Text="{x:Static fa:IconFont.Stop}"></Button>
             </StackLayout>
             <Label
-                Grid.Row="8"
+                Grid.Row="13"
                 FontAttributes="Bold"
                 FontSize="14"
                 Text="Vendor:" />
-            <Grid Grid.Row="9" RowDefinitions="Auto,Auto,Auto">
+            <Grid Grid.Row="14" RowDefinitions="Auto,Auto,Auto">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
@@ -149,11 +149,11 @@
                 </Label>
             </Grid>
             <Label
-                Grid.Row="10"
+                Grid.Row="12"
                 FontAttributes="Bold"
                 FontSize="14"
                 Text="Listed by:" />
-            <Grid Grid.Row="11">
+            <Grid Grid.Row="15">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
@@ -182,7 +182,7 @@
             </Grid>
 
             <StackLayout Orientation="Horizontal"
-                Grid.Row="12">
+                Grid.Row="16">
                 <Button Clicked="MapMarkedAlt_Clicked"
                     FontFamily="FA-solid"
                     Text="{x:Static fa:IconFont.MapMarkedAlt}">
@@ -204,7 +204,7 @@
                 </Button>
             </StackLayout>
             <StackLayout Orientation="Horizontal"
-                Grid.Row="13">
+                Grid.Row="17">
 
                 <Button Clicked="PDF_Clicked"
                     FontFamily="FA-solid"

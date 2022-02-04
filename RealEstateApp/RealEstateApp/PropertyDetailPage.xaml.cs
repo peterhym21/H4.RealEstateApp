@@ -51,11 +51,17 @@ namespace RealEstateApp
             await SpeakNowDefaultSettings();
         }
 
+
         CancellationTokenSource cts;
         public async Task SpeakNowDefaultSettings()
         {
+            var settings = new SpeechOptions()
+            {
+                Volume = Preferences.Get("Pitch", 0.5f),
+                Pitch = Preferences.Get("Volume", 0.5f)
+        };
             cts = new CancellationTokenSource();
-            await TextToSpeech.SpeakAsync(Property.Description, cts.Token);
+            await TextToSpeech.SpeakAsync(Property.Description, settings, cts.Token);
         }
 
         private void CancelSpeech_Clicked(object sender, EventArgs e)

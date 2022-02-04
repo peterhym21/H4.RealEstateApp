@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="RealEstateApp.AboutPage">
-    
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <Color x:Key="Primary">#2196F3</Color>
@@ -13,17 +13,18 @@
             <Color x:Key="LightTextColor">#999999</Color>
         </ResourceDictionary>
     </ContentPage.Resources>
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <ScrollView Grid.Row="0">
             <StackLayout
                 Padding="16,40,16,40"
                 Orientation="Vertical"
-                Spacing="10">
+                Spacing="10"
+                    x:Name="about">
                 <Label FontSize="22">
                     <Label.FormattedText>
                         <FormattedString>
@@ -71,5 +72,18 @@
                     TextColor="White" />
             </StackLayout>
         </ScrollView>
+        <StackLayout x:Name="settings" Grid.Row="2">
+            <Label Text="Pitch" />
+            <Slider Maximum="2" Minimum="0" Value="{Binding Pitch}"
+                            MinimumTrackColor="Black" ThumbColor="Red" MaximumTrackColor="DimGray" />
+            <Label Text="Volume" />
+            <Slider Maximum="1" Minimum="0" Value="{Binding Volume}"
+                            MinimumTrackColor="Black" ThumbColor="Red" MaximumTrackColor="DimGray" />
+            <Button
+                    Margin="0,10,0,0"
+                    BackgroundColor="{StaticResource Primary}"
+                    Text="Save"
+                    TextColor="White" />
+        </StackLayout>
     </Grid>
 </ContentPage>
