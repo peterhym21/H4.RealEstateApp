@@ -4,6 +4,7 @@
              xmlns:main="clr-namespace:RealEstateApp"
              x:Class="RealEstateApp.AppShell">
 
+    <main:LoginPage Title="Login"/>
     <main:PropertyListPage Title="Property List"/>
     <main:HeightCalculatorPage Title="Hight"/>
     <main:CompassPage Title="Compass"/>

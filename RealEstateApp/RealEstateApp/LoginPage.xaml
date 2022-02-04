@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:fa="clr-namespace:FontAwesome" 
+             x:Class="RealEstateApp.LoginPage">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <Label FontSize="Medium" FontFamily="FA-solid">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{Static fa:IconFont.User}"/>
+                        <Span Text=" " />
+                        <Span Text="UserName" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Entry FontSize="Medium" x:Name="Address" Text="{Binding Username}" />
+
+            <Label FontSize="Medium" FontFamily="FA-solid">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{Static fa:IconFont.Key}"/>
+                        <Span Text=" " />
+                        <Span Text="Password" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Entry FontSize="Medium" x:Name="Address" Text="{Binding Password}" />
+
+            <Button Clicked="ButtonLogin_Clicked"
+                        FontFamily="FA-solid"
+                        Text="Login"></Button>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
