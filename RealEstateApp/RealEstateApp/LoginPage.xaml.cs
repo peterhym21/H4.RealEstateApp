@@ -22,7 +22,7 @@ namespace RealEstateApp
             BindingContext = this;
         }
 
-        private async void ButtonLogin_Clicked(object sender, EventArgs e)
+        private async void LoginButton_OnClicked(object sender, EventArgs e)
         {
             LoginResult result = await LoginAsync();
             if (result.Success)
@@ -31,7 +31,7 @@ namespace RealEstateApp
             }
             else
             {
-                await DisplayAlert("Out!", "Get the fuck out of here!", "sorry");
+                await DisplayAlert("CUNT!", "Ha Nice Try Get Fucked CUNT!", "CUNT");
             }
         }
 
@@ -49,15 +49,15 @@ namespace RealEstateApp
                 };
             }
 
-            if (Username == "bofa" && Password == "admin")
+            if (Username == "admin" && Password == "admin")
             {
                 LoginButton.IsVisible = false;
                 LogoutButton.IsVisible = true;
                 LoginResult result = new LoginResult()
                 {
                     Success = true,
-                    AccessToken = "bruh_acessToken",
-                    RefreshToken = "bofa_deez_tokens"
+                    AccessToken = "acessToken",
+                    RefreshToken = "refreshTokens"
                 };
 
                 await SecureStorage.SetAsync("accessToken", result.AccessToken);

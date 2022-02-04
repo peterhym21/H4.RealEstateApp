@@ -15,7 +15,7 @@
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
-            <Entry FontSize="Medium" x:Name="Address" Text="{Binding Username}" />
+            <Entry FontSize="Medium" Text="{Binding Username}" />
 
             <Label FontSize="Medium" FontFamily="FA-solid">
                 <Label.FormattedText>
@@ -26,7 +26,7 @@
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
-            <Entry FontSize="Medium" x:Name="Address" Text="{Binding Password}" />
+            <Entry FontSize="Medium" Text="{Binding Password}" />
 
 
             <Button Text="Login" BackgroundColor="Blue"
