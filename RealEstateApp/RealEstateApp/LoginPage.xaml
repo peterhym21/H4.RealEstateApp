@@ -28,9 +28,11 @@
             </Label>
             <Entry FontSize="Medium" x:Name="Address" Text="{Binding Password}" />
 
-            <Button Clicked="ButtonLogin_Clicked"
-                        FontFamily="FA-solid"
-                        Text="Login"></Button>
+
+            <Button Text="Login" BackgroundColor="Blue"
+                    x:Name="LoginButton" Clicked="LoginButton_OnClicked" />
+            <Button Text="Logout" BackgroundColor="Red" IsVisible="False"
+                    x:Name="LogoutButton" Clicked="LogoutButton_OnClicked" />
 
         </StackLayout>
     </ContentPage.Content>
