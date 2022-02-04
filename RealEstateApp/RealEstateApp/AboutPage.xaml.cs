@@ -18,8 +18,14 @@ namespace RealEstateApp
         {
             
             InitializeComponent();
+            BindingContext = this;
+        }
+
+        private void SaveSettings_Clicked(object sender, EventArgs e)
+        {
             Preferences.Set("Pitch", Pitch);
             Preferences.Set("Volume", Volume);
+            DisplayAlert("Alert", "Settings are saved", "OK");
         }
     }
 }

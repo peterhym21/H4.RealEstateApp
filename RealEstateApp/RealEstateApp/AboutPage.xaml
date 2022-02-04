@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:fa="clr-namespace:FontAwesome"
              mc:Ignorable="d"
              x:Class="RealEstateApp.AboutPage">
 
@@ -74,16 +75,15 @@
         </ScrollView>
         <StackLayout x:Name="settings" Grid.Row="2">
             <Label Text="Pitch" />
-            <Slider Maximum="2" Minimum="0" Value="{Binding Pitch}"
+            <Slider Maximum="1" Minimum="0" Value="{Binding Pitch}"
                             MinimumTrackColor="Black" ThumbColor="Red" MaximumTrackColor="DimGray" />
             <Label Text="Volume" />
             <Slider Maximum="1" Minimum="0" Value="{Binding Volume}"
                             MinimumTrackColor="Black" ThumbColor="Red" MaximumTrackColor="DimGray" />
-            <Button
-                    Margin="0,10,0,0"
-                    BackgroundColor="{StaticResource Primary}"
-                    Text="Save"
-                    TextColor="White" />
+            <Button Clicked="SaveSettings_Clicked"
+                    FontFamily="FA-solid"
+                    Text="{x:Static fa:IconFont.Save}">
+            </Button>
         </StackLayout>
     </Grid>
 </ContentPage>

@@ -57,8 +57,8 @@ namespace RealEstateApp
         {
             var settings = new SpeechOptions()
             {
-                Volume = Preferences.Get("Pitch", 0.5f),
-                Pitch = Preferences.Get("Volume", 0.5f)
+                Volume = Preferences.Get("Volume", 1f),
+                Pitch = Preferences.Get("Pitch", 1f)
         };
             cts = new CancellationTokenSource();
             await TextToSpeech.SpeakAsync(Property.Description, settings, cts.Token);
